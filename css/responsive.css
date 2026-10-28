@@ -48,7 +48,16 @@
 
   /* 网格转单列 */
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .portal-grid { flex-direction: column; }
+  /* 手机端：卡片列顶端对齐（避免 justify-content:center 在内容超高时把顶部裁掉且无法滑动），
+     并让网格按内容自然增高，由 .portal 统一滚动 */
+  .portal-grid {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 0 auto;
+    padding: 12px 20px 32px;
+    gap: 18px;
+  }
   .portal-card { width: 100%; max-width: 360px; min-height: auto; }
   .portal-head { padding: 36px 20px 4px; }
   .portal-head h1 { font-size: 24px; }
