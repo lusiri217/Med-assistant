@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AI 模拟患者诊断教学平台</title>
+  <meta name="description" content="学生端 / 管理端 / 医院端 三端一体的模拟患者问诊与诊断教学平台（纯前端，支持 Mock 演示模式）" />
+  <!-- 样式：严格按照 base -> layout -> components -> responsive 顺序加载 -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- 应用根节点：所有视图渲染于此 -->
+  <div id="app" class="app-root"></div>
+
+  <!-- 全局 Toast 容器 -->
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <!-- 全局模态框容器 -->
+  <div id="modal-root" class="modal-root"></div>
+
+  <!-- 可选 CDN 依赖（联网时增强 PDF 解析；断网自动降级，不影响核心流程） -->
+  <!-- pdf.js 用于医院端解析 PDF 病历文本 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+
+  <!-- 核心脚本：顺序加载，全部挂载到 window.App 命名空间（不使用 ES Module，兼容 file://） -->
+  <script src="js/utils.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/prompts.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/api.js"></script>
+  <!-- 路由（放在最后，DOMContentLoaded 时启动，确保视图已注册） -->
+  <script src="js/router.js"></script>
+  <!-- 视图层 -->
+  <script src="js/views/portal.js"></script>
+  <script src="js/views/hospital-upload.js"></script>
+  <script src="js/views/hospital-cases.js"></script>
+  <script src="js/views/admin-api.js"></script>
+  <script src="js/views/admin-ai.js"></script>
+  <script src="js/views/admin-resources.js"></script>
+  <script src="js/views/admin-prompts.js"></script>
+  <script src="js/views/admin-questions.js"></script>
+  <script src="js/views/admin-cases.js"></script>
+  <script src="js/views/admin-dashboard.js"></script>
+  <script src="js/views/student-diagnosis.js"></script>
+  <script src="js/views/student-records.js"></script>
+  <script src="js/views/student-quiz.js"></script>
+</body>
+</html>

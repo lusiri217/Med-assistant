@@ -1,0 +1,8 @@
+# 系统/编辑器文件
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# 依赖（本项目为零构建工具，此处仅为防止误提交）
+node_modules/

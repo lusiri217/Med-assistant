@@ -1,0 +1,122 @@
+/* ============================================================
+   base.css —— 全局变量、重置、字体、主题色
+   仅定义设计令牌与基础排版，布局/组件见 layout.css / components.css
+   ============================================================ */
+
+:root {
+  /* 主题色 */
+  --c-primary: #2F6BFF;          /* 主色：医疗蓝 */
+  --c-primary-dark: #1F4FD6;
+  --c-primary-soft: #EAF1FF;     /* 主色浅底 */
+  --c-mint: #34D399;             /* 薄荷绿点缀 */
+  --c-mint-soft: #E6FBF2;
+  --c-danger: #F04251;
+  --c-danger-soft: #FDEBED;
+  --c-warning: #F5A623;
+  --c-warning-soft: #FEF4E3;
+
+  /* 中性色 */
+  --c-text: #1A2233;
+  --c-text-2: #5A6477;
+  --c-text-3: #8A93A6;
+  --c-border: #E6E9F0;
+  --c-bg: #F4F6FB;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #F8FAFD;
+
+  /* 患者气泡 / 医生气泡 */
+  --c-bubble-patient: #F1F3F8;
+  --c-bubble-doctor: var(--c-primary);
+
+  /* 圆角 / 阴影 */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+  --shadow-sm: 0 1px 3px rgba(20, 30, 60, .06);
+  --shadow-md: 0 4px 16px rgba(20, 30, 60, .08);
+  --shadow-lg: 0 12px 36px rgba(20, 30, 60, .12);
+
+  /* 间距 */
+  --gap-xs: 6px;
+  --gap-sm: 10px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 36px;
+
+  /* 侧边栏宽度 */
+  --sidebar-w: 240px;
+  --sidebar-w-mini: 76px;
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ===== 重置 ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6, p, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: var(--c-primary); text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img, svg { display: block; max-width: 100%; }
+input, textarea, select, button { font-family: inherit; font-size: inherit; color: inherit; }
+textarea { resize: vertical; }
+
+/* 可访问性：键盘聚焦可见 */
+:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+
+/* 隐藏滚动条但保留滚动（聊天区等） */
+.scroll-y { overflow-y: auto; scrollbar-width: thin; }
+.scroll-y::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-y::-webkit-scrollbar-thumb { background: #cdd4e2; border-radius: 8px; }
+
+/* 文本工具类 */
+.t-muted { color: var(--c-text-3); }
+.t-2 { color: var(--c-text-2); }
+.t-primary { color: var(--c-primary); }
+.t-danger { color: var(--c-danger); }
+.t-mint { color: var(--c-mint); }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 12px; }
+.text-lg { font-size: 18px; }
+.text-xl { font-size: 22px; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.t-center { text-align: center; }
+.t-right { text-align: right; }
+.mono { font-family: var(--font-mono); }
+
+/* 通用布局工具类 */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.flex-1 { flex: 1; min-width: 0; min-height: 0; }
+.gap-sm { gap: var(--gap-sm); }
+.gap-md { gap: var(--gap-md); }
+.gap-lg { gap: var(--gap-lg); }
+.wrap { flex-wrap: wrap; }
+.hidden { display: none !important; }
+.full { width: 100%; }
+.full-h { height: 100%; }
+
+/* 淡入动画（页面/气泡） */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes popIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+.anim-fade { animation: fadeIn .25s ease both; }
+.anim-rise { animation: riseIn .28s ease both; }
+.anim-pop { animation: popIn .2s ease both; }
